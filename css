@@ -1,0 +1,118 @@
+:root {
+    --main-color: #C41E3A;
+    --main-dark: #a3192f;
+    --main-light: #e74c66;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--main-color) !important;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.85) !important;
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--main-color);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--main-dark);
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Menu styling */
+.menu-card {
+    transition: 0.3s;
+}
+
+.menu-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Price */
+.price {
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+/* Section spacing */
+.page-section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Badge improvements */
+.badge {
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+.hero-carousel img {
+    height: 420px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.hero-caption {
+    bottom: 50px;
+}
+
+.hero-caption h1,
+.hero-caption h2,
+.hero-caption p {
+    color: #fff;
+}
+
+.quick-action-card {
+    border-radius: 16px;
+    transition: 0.3s ease;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-5px);
+}
+
+.menu-disclaimer {
+    background: #fff3cd;
+    border-left: 5px solid #C41E3A;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #5c3b00;  
+}
