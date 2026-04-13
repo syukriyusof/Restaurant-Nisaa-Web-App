@@ -10,13 +10,19 @@ if ($_SESSION["role"] !== "admin" && $_SESSION["role"] !== "staff") {
     die("403 Forbidden");
 }
 
-$result = $conn->query("SELECT user_id, full_name, email, reward_points FROM users WHERE role='customer' ORDER BY reward_points DESC");
+$sql = "
+    SELECT f.*, u.full_name, u.email
+    FROM feedback f
+    JOIN users u ON f.user_id = u.user_id
+    ORDER BY f.created_at DESC
+";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Customer Reward Points</title>
+    <title>Customer Feedback</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/fyp-nisaa/assets/css">
 </head>
@@ -24,24 +30,28 @@ $result = $conn->query("SELECT user_id, full_name, email, reward_points FROM use
 <?php require_once __DIR__ . "/../includes/navbar_admin.php"; ?>
 
 <div class="container mt-4">
-    <h2>Customer Reward Points</h2>
+    <h2>Customer Feedback</h2>
 
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th>User ID</th>
+            <th>ID</th>
             <th>Customer</th>
             <th>Email</th>
-            <th>Reward Points</th>
+            <th>Rating</th>
+            <th>Remark</th>
+            <th>Date</th>
         </tr>
         </thead>
         <tbody>
         <?php while ($row = $result->fetch_assoc()) { ?>
             <tr>
-                <td><?= $row["user_id"] ?></td>
+                <td><?= $row["feedback_id"] ?></td>
                 <td><?= htmlspecialchars($row["full_name"]) ?></td>
                 <td><?= htmlspecialchars($row["email"]) ?></td>
-                <td><?= htmlspecialchars($row["reward_points"]) ?></td>
+                <td><?= htmlspecialchars($row["rating"]) ?>/5</td>
+                <td><?= htmlspecialchars($row["remark"]) ?></td>
+                <td><?= htmlspecialchars($row["created_at"]) ?></td>
             </tr>
         <?php } ?>
         </tbody>
